@@ -161,7 +161,7 @@ uint8_t ledBrightness = initialLedBrightness;
 uint8_t nightLedBrightness = 2;                         // Brightness of Neopixel in nightmode
 
 // MQTT
-bool enableMqtt = true;
+bool enableMqtt = false;
 #ifdef MQTT_ENABLE
     uint8_t const stillOnlineInterval = 60;             // Interval 'I'm still alive' is sent via MQTT (in seconds)
     uint32_t mqttLastRetryTimestamp = 0;
