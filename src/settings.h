@@ -67,9 +67,6 @@
 #define NEXT_BUTTON                     4           // GPIO to detect next
 #define PREVIOUS_BUTTON                 2           // GPIO to detect previous (Important: as of 19.11.2020 changed from 33 to 2)
 
-// (optional) Power-control
-#define POWER                           17          // GPIO used to drive transistor-circuit, that switches off peripheral devices while ESP32-deepsleep
-
 // (optional) Neopixel
 #define LED_PIN                         12          // GPIO for Neopixel-signaling
 

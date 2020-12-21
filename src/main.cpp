@@ -2320,7 +2320,6 @@ void deepSleepManager(void) {
         #endif
         /*SPI.end();
         spiSD.end();*/
-        digitalWrite(POWER, LOW);
         delay(200);
         esp_deep_sleep_start();
     }
@@ -3668,8 +3667,6 @@ void setup() {
     Serial.begin(115200);
     esp_sleep_enable_ext0_wakeup((gpio_num_t) DREHENCODER_BUTTON, 0);
     srand(esp_random());
-    pinMode(POWER, OUTPUT);
-    digitalWrite(POWER, HIGH);
     prefsRfid.begin((char *) FPSTR(prefsRfidNamespace));
     prefsSettings.begin((char *) FPSTR(prefsSettingsNamespace));
 
