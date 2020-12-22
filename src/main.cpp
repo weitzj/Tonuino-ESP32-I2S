@@ -172,7 +172,7 @@ uint8_t const cardIdSize = 4;                           // RFID
 uint8_t maxVolume = 21;                                 // Current maximum volume that can be adjusted
 uint8_t maxVolumeSpeaker = 21;                          // Maximum volume that can be adjusted in speaker-mode (default; can be changed later via GUI)
 uint8_t minVolume = 0;                                  // Lowest volume that can be adjusted
-uint8_t initVolume = 3;                                 // 0...21 (If not found in NVS, this one will be taken) (default; can be changed later via GUI)
+uint8_t initVolume = 10;                                 // 0...21 (If not found in NVS, this one will be taken) (default; can be changed later via GUI)
 #ifdef HEADPHONE_ADJUST_ENABLE
     uint8_t maxVolumeHeadphone = 11;                    // Maximum volume that can be adjusted in headphone-mode (default; can be changed later via GUI)
 #endif
