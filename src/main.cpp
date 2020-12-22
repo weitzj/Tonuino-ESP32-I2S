@@ -182,8 +182,8 @@ uint8_t sleepTimer = 30;                                // Sleep timer in minute
 // FTP
 uint8_t ftpUserLength = 10;                             // Length will be published n-1 as maxlength to GUI
 uint8_t ftpPasswordLength = 15;                         // Length will be published n-1 as maxlength to GUI
-char *ftpUser = strndup((char*) "esp32", ftpUserLength);                // FTP-user (default; can be changed later via GUI)
-char *ftpPassword = strndup((char*) "esp32", ftpPasswordLength);        // FTP-password (default; can be changed later via GUI)
+char *ftpUser = strndup((char*) "Kalle", ftpUserLength);                // FTP-user (default; can be changed later via GUI)
+char *ftpPassword = strndup((char*) "Kalle", ftpPasswordLength);        // FTP-password (default; can be changed later via GUI)
 
 
 // Don't change anything here unless you know what you're doing

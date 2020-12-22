@@ -246,8 +246,8 @@ uint8_t currentVolume = initVolume;
 ////////////
 
 // AP-WiFi
-static const char accessPointNetworkSSID[] PROGMEM = "Tonuino";     // Access-point's SSID
-IPAddress apIP(192, 168, 4, 1);                         // Access-point's static IP
+static const char accessPointNetworkSSID[] PROGMEM = "kalle";     // Access-point's SSID
+IPAddress apIP(192, 168, 47, 11);                         // Access-point's static IP
 IPAddress apNetmask(255, 255, 255, 0);                  // Access-point's netmask
 bool accessPointStarted = false;
 

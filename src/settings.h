@@ -109,7 +109,7 @@ uint16_t intervalToLongPress = 700;                 // Interval in ms to disting
 // Default user/password is esp32/esp32 but can be changed via webgui
 
 // Tonuino will create a WiFi if joing existing WiFi was not possible. Name can be configured here.
-static const char accessPointNetworkSSID[] PROGMEM = "Tonuino";     // Access-point's SSID
+static const char accessPointNetworkSSID[] PROGMEM = "Kalle";     // Access-point's SSID
 
 // Where to store the backup-file for NVS-records
 static const char backupFile[] PROGMEM = "/backup.txt"; // File is written every time a (new) RFID-assignment via GUI is done
