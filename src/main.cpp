@@ -677,15 +677,11 @@ void doButtonActions(void) {
     // FTP-enable
     #ifdef FTP_ENABLE
         if (!ftpEnableLastStatus && !ftpEnableCurrentStatus) {
-            if (buttons[0].isPressed && buttons[2].isPressed) {
-                buttons[0].isPressed = false;
-                buttons[2].isPressed = false;
-                ftpEnableLastStatus = true;
-                #ifdef NEOPIXEL_ENABLE
-                    showLedOk = true;
-                #endif
+            ftpEnableLastStatus = true;
+            #ifdef NEOPIXEL_ENABLE
+                showLedOk = true;
+            #endif
             return;
-           }
         }
     #endif
 
