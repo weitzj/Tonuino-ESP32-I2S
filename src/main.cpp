@@ -657,24 +657,6 @@ void doButtonActions(void) {
         return; // Avoid button-handling if buttons are locked
     }
 
-    // WiFi-toggle
-    if (buttons[0].isPressed && buttons[1].isPressed) {
-        if (!wifiStatusToggledTimestamp || (millis() - wifiStatusToggledTimestamp >= 2000)) {
-            wifiStatusToggledTimestamp = millis();
-            buttons[0].isPressed = false;
-            buttons[1].isPressed = false;
-            if (writeWifiStatusToNVS(!getWifiEnableStatusFromNVS())) {
-                #ifdef NEOPIXEL_ENABLE
-                    showLedOk = true;       // Tell user action was accepted
-                #endif
-            } else {
-                #ifdef NEOPIXEL_ENABLE
-                    showLedError = true;    // Tell user action failed
-                #endif
-            }
-        }
-        return;
-    }
 
     // FTP-enable
     #ifdef FTP_ENABLE
