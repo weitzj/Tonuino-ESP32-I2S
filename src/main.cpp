@@ -224,7 +224,7 @@ uint8_t currentVolume = initVolume;
 ////////////
 
 // AP-WiFi
-IPAddress apIP(192, 168, 4, 1);                         // Access-point's static IP
+IPAddress apIP(192, 168, 47, 11);                         // Access-point's static IP
 IPAddress apNetmask(255, 255, 255, 0);                  // Access-point's netmask
 bool accessPointStarted = false;
 
@@ -236,7 +236,7 @@ uint8_t mqttUserLength = 16;
 uint8_t mqttPasswordLength = 16;
 
 // Please note: all of them are defaults that can be changed later via GUI
-char *mqtt_server = strndup((char*) "192.168.2.43", mqttServerLength);      // IP-address of MQTT-server (if not found in NVS this one will be taken)
+char *mqtt_server = strndup((char*) "192.168.47.12", mqttServerLength);      // IP-address of MQTT-server (if not found in NVS this one will be taken)
 char *mqttUser = strndup((char*) "mqtt-user", mqttUserLength);              // MQTT-user
 char *mqttPassword = strndup((char*) "mqtt-password", mqttPasswordLength);  // MQTT-password*/
 
