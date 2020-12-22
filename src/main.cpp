@@ -359,6 +359,8 @@ void rfidPreferenceLookupHandler (void);
 void sendWebsocketData(uint32_t client, uint8_t code);
 void setupVolume(void);
 void trackQueueDispatcher(const char *_sdFile, const uint32_t _lastPlayPos, const uint32_t _playMode, const uint16_t _trackLastPlayed);
+void volumeDecrease();
+void volumeIncrease();
 void volumeHandler(const int32_t _minVolume, const int32_t _maxVolume);
 void volumeToQueueSender(const int32_t _newVolume);
 wl_status_t wifiManager(void);
@@ -692,12 +694,14 @@ void doButtonActions(void) {
                     switch (i)      // Long-press-actions
                     {
                     case 0:
-                        trackControlToQueueSender(LASTTRACK);
+                        // trackControlToQueueSender(LASTTRACK);
+                        volumeIncrease();
                         buttons[i].isPressed = false;
                         break;
 
                     case 1:
-                        trackControlToQueueSender(FIRSTTRACK);
+                        // trackControlToQueueSender(FIRSTTRACK);
+                        volumeDecrease();
                         buttons[i].isPressed = false;
                         break;
 
@@ -714,12 +718,14 @@ void doButtonActions(void) {
                     switch (i)      // Short-press-actions
                     {
                     case 0:
-                        trackControlToQueueSender(NEXTTRACK);
+                        // trackControlToQueueSender(NEXTTRACK);
+                        volumeIncrease();
                         buttons[i].isPressed = false;
                         break;
 
                     case 1:
-                        trackControlToQueueSender(PREVIOUSTRACK);
+                        // trackControlToQueueSender(PREVIOUSTRACK);
+                        volumeDecrease();
                         buttons[i].isPressed = false;
                         break;
 
@@ -2321,6 +2327,39 @@ void deepSleepManager(void) {
     }
 }
 
+void volumeIncrease() {
+    if (lastVolume == -1) {
+        lastVolume = currentVolume;
+    }
+    
+    if (currentVolume == maxVolume) {
+        return;
+    }
+
+    uint32_t newVolume = currentVolume + 1;
+    if (newVolume != lastVolume) {
+        currentVolume = newVolume;
+        lastVolume = newVolume;
+        volumeToQueueSender(currentVolume);
+    }
+}
+
+void volumeDecrease() {
+    if (lastVolume == -1) {
+        lastVolume = currentVolume;
+    }
+
+    if (currentVolume == minVolume) {
+        return;
+    }
+
+    uint32_t newVolume = currentVolume - 1;
+    if (newVolume != lastVolume) {
+        currentVolume = newVolume;
+        lastVolume = newVolume;
+        volumeToQueueSender(currentVolume);
+    }
+}
 
 // Adds new volume-entry to volume-queue
 void volumeToQueueSender(const int32_t _newVolume) {
@@ -4067,7 +4106,7 @@ void loop() {
     #ifdef MEASURE_BATTERY_VOLTAGE
         batteryVoltageTester();
     #endif
-    volumeHandler(minVolume, maxVolume);
+    // volumeHandler(minVolume, maxVolume);
     buttonHandler();
     doButtonActions();
     sleepHandler();
