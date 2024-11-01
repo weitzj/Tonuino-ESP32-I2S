@@ -16,8 +16,8 @@
 #endif
 
 // FTP
-String Ftp_User = "esp32"; // FTP-user (default; can be changed later via GUI)
-String Ftp_Password = "esp32"; // FTP-password (default; can be changed later via GUI)
+String Ftp_User = "patchy"; // FTP-user (default; can be changed later via GUI)
+String Ftp_Password = "patchy"; // FTP-password (default; can be changed later via GUI)
 
 // FTP
 #ifdef FTP_ENABLE

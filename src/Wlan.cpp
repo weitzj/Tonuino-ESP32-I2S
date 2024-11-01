@@ -684,7 +684,7 @@ const String Wlan_GetCurrentSSID() {
 }
 
 const String Wlan_GetHostname() {
-	return gPrefsSettings.getString("Hostname", "ESPuino");
+	return gPrefsSettings.getString("Hostname", "patchy");
 }
 
 const String Wlan_GetMacAddress() {

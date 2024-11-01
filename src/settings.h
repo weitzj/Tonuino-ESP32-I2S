@@ -31,17 +31,17 @@
 
 
 	//########################## MODULES #################################
-	//#define PORT_EXPANDER_ENABLE          // When enabled, buttons can be connected via port-expander PCA9555 (https://forum.espuino.de/t/einsatz-des-port-expanders-pca9555/306)
+	#define PORT_EXPANDER_ENABLE          // When enabled, buttons can be connected via port-expander PCA9555 (https://forum.espuino.de/t/einsatz-des-port-expanders-pca9555/306)
 	//#define I2S_COMM_FMT_LSB_ENABLE       // Enables FMT instead of MSB for I2S-communication-format. Used e.g. by PT2811. Don't enable for MAX98357a, AC101 or PCM5102A)
 	#define MDNS_ENABLE                     // When enabled, you don't have to handle with ESPuino's IP-address. If hostname is set to "ESPuino", you can reach it via ESPuino.local
-	//#define MQTT_ENABLE                   // Make sure to configure mqtt-server and (optionally) username+pwd
+	#define MQTT_ENABLE                   // Make sure to configure mqtt-server and (optionally) username+pwd
 	#define FTP_ENABLE                      // Enables FTP-server; DON'T FORGET TO ACTIVATE AFTER BOOT BY PRESSING PAUSE + NEXT-BUTTONS (IN PARALLEL)!
 	#define NEOPIXEL_ENABLE                 // Don't forget configuration of NUM_LEDS if enabled
 	//#define NEOPIXEL_REVERSE_ROTATION     // Some Neopixels are adressed/soldered counter-clockwise. This can be configured here.
 	#define LANGUAGE DE                     // DE = deutsch; EN = english
 	//#define STATIC_IP_ENABLE              // DEPRECATED: Enables static IP-configuration (change static ip-section accordingly)
 	#define HEADPHONE_ADJUST_ENABLE         // Used to adjust (lower) volume for optional headphone-pcb (refer maxVolumeSpeaker / maxVolumeHeadphone) and to enable stereo (if PLAY_MONO_SPEAKER is set)
-	//#define PLAY_MONO_SPEAKER             // If only one speaker is used enabling mono should make sense. Please note: headphones is always stereo (if HEADPHONE_ADJUST_ENABLE is active)
+	#define PLAY_MONO_SPEAKER             // If only one speaker is used enabling mono should make sense. Please note: headphones is always stereo (if HEADPHONE_ADJUST_ENABLE is active)
 	#define SHUTDOWN_IF_SD_BOOT_FAILS       // Will put ESP to deepsleep if boot fails due to SD. Really recommend this if there's in battery-mode no other way to restart ESP! Interval adjustable via deepsleepTimeAfterBootFails.
 	#define MEASURE_BATTERY_VOLTAGE         // Enables battery-measurement via GPIO (ADC) and voltage-divider
 	//#define MEASURE_BATTERY_MAX17055      // Enables battery-measurement via external fuel gauge (MAX17055)
@@ -125,8 +125,10 @@
 	#define BUTTON_1_SHORT    CMD_PREVTRACK
 	#define BUTTON_2_SHORT    CMD_PLAYPAUSE
 	#define BUTTON_3_SHORT    CMD_MEASUREBATTERY
-	#define BUTTON_4_SHORT    CMD_SEEK_BACKWARDS
-	#define BUTTON_5_SHORT    CMD_SEEK_FORWARDS
+	// #define BUTTON_4_SHORT    CMD_SEEK_BACKWARDS
+	#define BUTTON_4_SHORT    CMD_VIRTUAL_RFID_CARD_10
+	// #define BUTTON_5_SHORT    CMD_SEEK_FORWARDS
+	#define BUTTON_5_SHORT    CMD_TOGGLE_MODE
 
 	#define BUTTON_0_LONG     CMD_LASTTRACK
 	#define BUTTON_1_LONG     CMD_FIRSTTRACK
@@ -200,11 +202,11 @@
 	constexpr const char timeZone[] = "CET-1CEST,M3.5.0,M10.5.0/3"; // Europe/Berlin
 
 	// ESPuino will create a WiFi if joing existing WiFi was not possible. Name and password can be configured here.
-	constexpr const char accessPointNetworkSSID[] = "ESPuino";     // Access-point's SSID
-	constexpr const char accessPointNetworkPassword[] = "";        // Access-point's Password, at least 8 characters! Set to an empty string to spawn an open WiFi.
+	constexpr const char accessPointNetworkSSID[] = "patchy";     // Access-point's SSID
+	constexpr const char accessPointNetworkPassword[] = "patchy";        // Access-point's Password, at least 8 characters! Set to an empty string to spawn an open WiFi.
 
 	// Bluetooth
-	constexpr const char nameBluetoothSinkDevice[] = "ESPuino";        // Name of your ESPuino as Bluetooth-device
+	constexpr const char nameBluetoothSinkDevice[] = "patchy";        // Name of your ESPuino as Bluetooth-device
 
 	// Where to store the backup-file for NVS-records
 	constexpr const char backupFile[] = "/backup.txt"; // File is written every time a (new) RFID-assignment via GUI is done
@@ -267,32 +269,32 @@
 	#ifdef MQTT_ENABLE
 		constexpr uint16_t mqttRetryInterval = 60;                // Try to reconnect to MQTT-server every (n) seconds if connection is broken
 		constexpr uint8_t mqttMaxRetriesPerInterval = 1;          // Number of retries per time-interval (mqttRetryInterval). mqttRetryInterval 60 / mqttMaxRetriesPerInterval 1 => once every 60s
-		#define DEVICE_HOSTNAME "ESP32-ESPuino"         // Name that is used for MQTT
-		constexpr const char topicSleepCmnd[] = "Cmnd/ESPuino/Sleep";
-		constexpr const char topicSleepState[] = "State/ESPuino/Sleep";
-		constexpr const char topicRfidCmnd[] = "Cmnd/ESPuino/Rfid";
-		constexpr const char topicRfidState[] = "State/ESPuino/Rfid";
-		constexpr const char topicTrackState[] = "State/ESPuino/Track";
-		constexpr const char topicTrackControlCmnd[] = "Cmnd/ESPuino/TrackControl";
-		constexpr const char topicCoverChangedState[] = "State/ESPuino/CoverChanged";
-		constexpr const char topicLoudnessCmnd[] = "Cmnd/ESPuino/Loudness";
-		constexpr const char topicLoudnessState[] = "State/ESPuino/Loudness";
-		constexpr const char topicSleepTimerCmnd[] = "Cmnd/ESPuino/SleepTimer";
-		constexpr const char topicSleepTimerState[] = "State/ESPuino/SleepTimer";
-		constexpr const char topicState[] = "State/ESPuino/State";
-		constexpr const char topicCurrentIPv4IP[] = "State/ESPuino/IPv4";
-		constexpr const char topicLockControlsCmnd[] ="Cmnd/ESPuino/LockControls";
-		constexpr const char topicLockControlsState[] ="State/ESPuino/LockControls";
-		constexpr const char topicPlaymodeState[] = "State/ESPuino/Playmode";
-		constexpr const char topicRepeatModeCmnd[] = "Cmnd/ESPuino/RepeatMode";
-		constexpr const char topicRepeatModeState[] = "State/ESPuino/RepeatMode";
-		constexpr const char topicLedBrightnessCmnd[] = "Cmnd/ESPuino/LedBrightness";
-		constexpr const char topicLedBrightnessState[] = "State/ESPuino/LedBrightness";
-		constexpr const char topicWiFiRssiState[] = "State/ESPuino/WifiRssi";
-		constexpr const char topicSRevisionState[] = "State/ESPuino/SoftwareRevision";
+		#define DEVICE_HOSTNAME "patchy"         // Name that is used for MQTT
+		constexpr const char topicSleepCmnd[] = "Cmnd/patchy/Sleep";
+		constexpr const char topicSleepState[] = "State/patchy/Sleep";
+		constexpr const char topicRfidCmnd[] = "Cmnd/patchy/Rfid";
+		constexpr const char topicRfidState[] = "State/patchy/Rfid";
+		constexpr const char topicTrackState[] = "State/patchy/Track";
+		constexpr const char topicTrackControlCmnd[] = "Cmnd/patchy/TrackControl";
+		constexpr const char topicCoverChangedState[] = "State/patchy/CoverChanged";
+		constexpr const char topicLoudnessCmnd[] = "Cmnd/patchy/Loudness";
+		constexpr const char topicLoudnessState[] = "State/patchy/Loudness";
+		constexpr const char topicSleepTimerCmnd[] = "Cmnd/patchy/SleepTimer";
+		constexpr const char topicSleepTimerState[] = "State/patchy/SleepTimer";
+		constexpr const char topicState[] = "State/patchy/State";
+		constexpr const char topicCurrentIPv4IP[] = "State/patchy/IPv4";
+		constexpr const char topicLockControlsCmnd[] ="Cmnd/patchy/LockControls";
+		constexpr const char topicLockControlsState[] ="State/patchy/LockControls";
+		constexpr const char topicPlaymodeState[] = "State/patchy/Playmode";
+		constexpr const char topicRepeatModeCmnd[] = "Cmnd/patchy/RepeatMode";
+		constexpr const char topicRepeatModeState[] = "State/patchy/RepeatMode";
+		constexpr const char topicLedBrightnessCmnd[] = "Cmnd/patchy/LedBrightness";
+		constexpr const char topicLedBrightnessState[] = "State/patchy/LedBrightness";
+		constexpr const char topicWiFiRssiState[] = "State/patchy/WifiRssi";
+		constexpr const char topicSRevisionState[] = "State/patchy/SoftwareRevision";
 		#ifdef BATTERY_MEASURE_ENABLE
-		constexpr const char topicBatteryVoltage[] = "State/ESPuino/Voltage";
-		constexpr const char topicBatterySOC[]     = "State/ESPuino/Battery";
+		constexpr const char topicBatteryVoltage[] = "State/patchy/Voltage";
+		constexpr const char topicBatterySOC[]     = "State/patchy/Battery";
 		#endif
 	#endif
 
