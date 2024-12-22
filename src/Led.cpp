@@ -703,7 +703,7 @@ AnimationReturnType Animation_Webstream(const bool startNewAnimation, CRGBSet &l
 	} else {
 		if (startNewAnimation || timerProgress == 0) {
 			leds = CRGB::Black;
-			timerProgress = 100;
+			timerProgress = 10;
 			if (ledPosWebstream + 1 < leds.size()) {
 				ledPosWebstream++;
 			} else {
@@ -722,8 +722,10 @@ AnimationReturnType Animation_Webstream(const bool startNewAnimation, CRGBSet &l
 						leds[Led_Address(ledPosWebstream)] = CRGB::Blue;
 						leds[(Led_Address(ledPosWebstream) + leds.size() / 2) % leds.size()] = CRGB::Blue;
 					} else {
-						leds[Led_Address(ledPosWebstream)].setHue(webstreamColor);
-						leds[(Led_Address(ledPosWebstream) + leds.size() / 2) % leds.size()].setHue(webstreamColor++);
+						webstreamColor = webstreamColor + 10;
+						fill_rainbow(leds, leds.size(), webstreamColor, 10);
+						// leds[Led_Address(ledPosWebstream)].setHue(webstreamColor);
+						// leds[(Led_Address(ledPosWebstream) + leds.size() / 2) % leds.size()].setHue(webstreamColor++);
 					}
 				}
 			}
