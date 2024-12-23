@@ -203,11 +203,11 @@
 	constexpr const char timeZone[] = "CET-1CEST,M3.5.0,M10.5.0/3"; // Europe/Berlin
 
 	// ESPuino will create a WiFi if joing existing WiFi was not possible. Name and password can be configured here.
-	constexpr const char accessPointNetworkSSID[] = "patchy";     // Access-point's SSID
-	constexpr const char accessPointNetworkPassword[] = "patchy";        // Access-point's Password, at least 8 characters! Set to an empty string to spawn an open WiFi.
+	constexpr const char accessPointNetworkSSID[] = "storybox";     // Access-point's SSID
+	constexpr const char accessPointNetworkPassword[] = "storybox";        // Access-point's Password, at least 8 characters! Set to an empty string to spawn an open WiFi.
 
 	// Bluetooth
-	constexpr const char nameBluetoothSinkDevice[] = "patchy";        // Name of your ESPuino as Bluetooth-device
+	constexpr const char nameBluetoothSinkDevice[] = "storybox";        // Name of your ESPuino as Bluetooth-device
 
 	// Where to store the backup-file for NVS-records
 	constexpr const char backupFile[] = "/backup.txt"; // File is written every time a (new) RFID-assignment via GUI is done
@@ -270,32 +270,32 @@
 	#ifdef MQTT_ENABLE
 		constexpr uint16_t mqttRetryInterval = 60;                // Try to reconnect to MQTT-server every (n) seconds if connection is broken
 		constexpr uint8_t mqttMaxRetriesPerInterval = 1;          // Number of retries per time-interval (mqttRetryInterval). mqttRetryInterval 60 / mqttMaxRetriesPerInterval 1 => once every 60s
-		#define DEVICE_HOSTNAME "patchy"         // Name that is used for MQTT
-		constexpr const char topicSleepCmnd[] = "Cmnd/patchy/Sleep";
-		constexpr const char topicSleepState[] = "State/patchy/Sleep";
-		constexpr const char topicRfidCmnd[] = "Cmnd/patchy/Rfid";
-		constexpr const char topicRfidState[] = "State/patchy/Rfid";
-		constexpr const char topicTrackState[] = "State/patchy/Track";
-		constexpr const char topicTrackControlCmnd[] = "Cmnd/patchy/TrackControl";
-		constexpr const char topicCoverChangedState[] = "State/patchy/CoverChanged";
-		constexpr const char topicLoudnessCmnd[] = "Cmnd/patchy/Loudness";
-		constexpr const char topicLoudnessState[] = "State/patchy/Loudness";
-		constexpr const char topicSleepTimerCmnd[] = "Cmnd/patchy/SleepTimer";
-		constexpr const char topicSleepTimerState[] = "State/patchy/SleepTimer";
-		constexpr const char topicState[] = "State/patchy/State";
-		constexpr const char topicCurrentIPv4IP[] = "State/patchy/IPv4";
-		constexpr const char topicLockControlsCmnd[] ="Cmnd/patchy/LockControls";
-		constexpr const char topicLockControlsState[] ="State/patchy/LockControls";
-		constexpr const char topicPlaymodeState[] = "State/patchy/Playmode";
-		constexpr const char topicRepeatModeCmnd[] = "Cmnd/patchy/RepeatMode";
-		constexpr const char topicRepeatModeState[] = "State/patchy/RepeatMode";
-		constexpr const char topicLedBrightnessCmnd[] = "Cmnd/patchy/LedBrightness";
-		constexpr const char topicLedBrightnessState[] = "State/patchy/LedBrightness";
-		constexpr const char topicWiFiRssiState[] = "State/patchy/WifiRssi";
-		constexpr const char topicSRevisionState[] = "State/patchy/SoftwareRevision";
+		#define DEVICE_HOSTNAME "storybox"         // Name that is used for MQTT
+		constexpr const char topicSleepCmnd[] = "Cmnd/storybox/Sleep";
+		constexpr const char topicSleepState[] = "State/storybox/Sleep";
+		constexpr const char topicRfidCmnd[] = "Cmnd/storybox/Rfid";
+		constexpr const char topicRfidState[] = "State/storybox/Rfid";
+		constexpr const char topicTrackState[] = "State/storybox/Track";
+		constexpr const char topicTrackControlCmnd[] = "Cmnd/storybox/TrackControl";
+		constexpr const char topicCoverChangedState[] = "State/storybox/CoverChanged";
+		constexpr const char topicLoudnessCmnd[] = "Cmnd/storybox/Loudness";
+		constexpr const char topicLoudnessState[] = "State/storybox/Loudness";
+		constexpr const char topicSleepTimerCmnd[] = "Cmnd/storybox/SleepTimer";
+		constexpr const char topicSleepTimerState[] = "State/storybox/SleepTimer";
+		constexpr const char topicState[] = "State/storybox/State";
+		constexpr const char topicCurrentIPv4IP[] = "State/storybox/IPv4";
+		constexpr const char topicLockControlsCmnd[] ="Cmnd/storybox/LockControls";
+		constexpr const char topicLockControlsState[] ="State/storybox/LockControls";
+		constexpr const char topicPlaymodeState[] = "State/storybox/Playmode";
+		constexpr const char topicRepeatModeCmnd[] = "Cmnd/storybox/RepeatMode";
+		constexpr const char topicRepeatModeState[] = "State/storybox/RepeatMode";
+		constexpr const char topicLedBrightnessCmnd[] = "Cmnd/storybox/LedBrightness";
+		constexpr const char topicLedBrightnessState[] = "State/storybox/LedBrightness";
+		constexpr const char topicWiFiRssiState[] = "State/storybox/WifiRssi";
+		constexpr const char topicSRevisionState[] = "State/storybox/SoftwareRevision";
 		#ifdef BATTERY_MEASURE_ENABLE
-		constexpr const char topicBatteryVoltage[] = "State/patchy/Voltage";
-		constexpr const char topicBatterySOC[]     = "State/patchy/Battery";
+		constexpr const char topicBatteryVoltage[] = "State/storybox/Voltage";
+		constexpr const char topicBatterySOC[]     = "State/storybox/Battery";
 		#endif
 	#endif
 

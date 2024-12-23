@@ -16,8 +16,8 @@
 #endif
 
 // FTP
-String Ftp_User = "patchy"; // FTP-user (default; can be changed later via GUI)
-String Ftp_Password = "patchy"; // FTP-password (default; can be changed later via GUI)
+String Ftp_User = "storybox"; // FTP-user (default; can be changed later via GUI)
+String Ftp_Password = "storybox"; // FTP-password (default; can be changed later via GUI)
 
 // FTP
 #ifdef FTP_ENABLE
